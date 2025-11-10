@@ -1,21 +1,19 @@
 import { useEffect, useState, useRef } from 'react'
-import './App-modern.css'
-// To switch between layouts, change the import above to:
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import './App.css'
 // import './App.css'        - Original layout
 // import './App-alt.css'     - Alternative layout
 // import './App-modern.css'  - Modern layout
+import Home from './pages/Home'
+import About from './pages/About'
+import Services from './pages/Services'
+import Knowledge from './pages/Knowledge'
+import Contact from './pages/Contact'
 
-function App() {
-  const [showScrollText, setShowScrollText] = useState(false)
+function Layout({ children }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const footerRef = useRef(null)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowScrollText(true)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
+  const location = useLocation()
 
   useEffect(() => {
     const observerOptions = {
@@ -31,20 +29,25 @@ function App() {
       })
     }, observerOptions)
 
-    const elements = document.querySelectorAll('.fade-in-on-scroll')
-    elements.forEach(el => observer.observe(el))
+    // Small delay to ensure DOM is updated after route change
+    const timeoutId = setTimeout(() => {
+      const elements = document.querySelectorAll('.fade-in-on-scroll')
+      elements.forEach(el => observer.observe(el))
+    }, 100)
 
     return () => {
+      clearTimeout(timeoutId)
+      const elements = document.querySelectorAll('.fade-in-on-scroll')
       elements.forEach(el => observer.unobserve(el))
     }
-  }, [])
+  }, [location])
 
   return (
     <div className="app">
       <nav className="navbar">
         <div className="navbar-container">
           <div className="navbar-logo">
-            <a href="#home">Columbus Capital</a>
+            <Link to="/">Columbus Capital</Link>
           </div>
           <button 
             className="mobile-menu-toggle"
@@ -56,47 +59,25 @@ function App() {
             <span></span>
           </button>
           <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-            <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
-            <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About Us</a></li>
-            <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Our Services</a></li>
-            <li><a href="#knowledge" onClick={() => setIsMobileMenuOpen(false)}>Knowledge Hub</a></li>
-            <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</a></li>
+            <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
+            <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link></li>
+            <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Our Services</Link></li>
+            <li><Link to="/knowledge" onClick={() => setIsMobileMenuOpen(false)}>Knowledge Hub</Link></li>
+            <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link></li>
           </ul>
         </div>
       </nav>
-      <section className="hero-section">
-        <div className="hero-background">
-          <div className="hero-overlay"></div>
-        </div>
-        <div className="hero-content">
-          <h1 className="hero-headline">
-            Empowering Investment in Africa's Frontier and Emerging Markets
-          </h1>
-          <p className="hero-subtext">
-            Columbus Capital Advisors Limited is a Pan-African asset management and private
-            equity firm that connects global capital to Africa's most promising investment opportunities
-            through deep research, local expertise, and strategic partnerships.
-          </p>
-          <div className="hero-cta">
-            <button className="cta-button primary">Explore Our Services</button>
-            <button className="cta-button secondary">Partner With Us</button>
-          </div>
-          <div className={`scroll-animation ${showScrollText ? 'visible' : ''}`}>
-            <span className="scroll-text">Invest. Collaborate. Grow.</span>
-          </div>
-        </div>
-      </section>
-      
+      {children}
       <footer className="footer fade-in-on-scroll" ref={footerRef}>
         <div className="footer-container">
           <div className="footer-section">
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#knowledge">Insights</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/knowledge">Insights</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
           
@@ -134,6 +115,20 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="/services" element={<Layout><Services /></Layout>} />
+        <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
+        <Route path="/contact" element={<Layout><Contact /></Layout>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
