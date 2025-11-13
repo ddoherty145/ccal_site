@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [showScrollText, setShowScrollText] = useState(false)
@@ -25,8 +26,8 @@ function Home() {
           through deep research, local expertise, and strategic partnerships.
         </p>
         <div className="hero-cta">
-          <button className="cta-button primary">Explore Our Services</button>
-          <button className="cta-button secondary">Partner With Us</button>
+          <Link to="/services" className="cta-button primary">Explore Our Services</Link>
+          <Link to="/business-consulting" className="cta-button secondary">Partner With Us</Link>
         </div>
         <div className={`scroll-animation ${showScrollText ? 'visible' : ''}`}>
           <span className="scroll-text">Invest. Collaborate. Grow.</span>

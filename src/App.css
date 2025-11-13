@@ -187,6 +187,9 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
 }
 
 .cta-button.primary {
@@ -825,6 +828,8 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 1rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .service-cta:hover {
@@ -1522,10 +1527,35 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-.form-submit-button:hover {
+.form-submit-button:hover:not(:disabled) {
   background: var(--gold-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.form-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-message.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.form-message.error {
+  background: rgba(244, 67, 54, 0.1);
+  color: #c62828;
+  border: 2px solid rgba(244, 67, 54, 0.3);
 }
 
 @media (max-width: 1024px) {
@@ -1596,6 +1626,285 @@ h1, h2, h3, h4, h5, h6 {
 
   .africa-map {
     height: 300px;
+  }
+}
+
+/* Business & Market Entry Consulting Page */
+.business-consulting-section {
+  padding: 8rem 2rem 6rem;
+  background: var(--white);
+  color: var(--navy-blue);
+  min-height: calc(100vh - 200px);
+}
+
+.business-consulting-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.business-consulting-hero {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.business-consulting-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.business-consulting-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gold);
+}
+
+.business-consulting-intro {
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.business-consulting-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.consulting-service-card {
+  padding: 2.5rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
+}
+
+.consulting-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+}
+
+.consulting-service-card .service-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 12px;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.consulting-service-card .service-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  margin-bottom: 1rem;
+}
+
+.consulting-service-card .service-description {
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.7;
+  color: var(--navy-blue);
+}
+
+.consulting-cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.1);
+}
+
+.consulting-cta-section .cta-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  margin-bottom: 1rem;
+}
+
+.consulting-cta-section .cta-description {
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--navy-blue);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.consulting-cta-section .cta-button {
+  background: var(--gold);
+  color: var(--navy-blue);
+}
+
+.consulting-cta-section .cta-button:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Work In Progress Page */
+.work-in-progress-section {
+  padding: 8rem 2rem 6rem;
+  background: var(--white);
+  color: var(--navy-blue);
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wip-container {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.wip-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wip-title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  margin-bottom: 1.5rem;
+}
+
+.wip-message {
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy-blue);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.wip-submessage {
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--navy-blue);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.wip-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wip-button {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wip-button.primary {
+  background: var(--gold);
+  color: var(--navy-blue);
+}
+
+.wip-button.primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.wip-button.secondary {
+  background: transparent;
+  color: var(--navy-blue);
+  border: 2px solid var(--navy-blue);
+}
+
+.wip-button.secondary:hover {
+  background: var(--navy-blue);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .business-consulting-title {
+    font-size: 2.5rem;
+  }
+
+  .business-consulting-intro {
+    font-size: 1.3rem;
+  }
+
+  .business-consulting-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .wip-title {
+    font-size: 2.5rem;
+  }
+
+  .wip-message {
+    font-size: 1.2rem;
+  }
+
+  .wip-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wip-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-consulting-title {
+    font-size: 2rem;
+  }
+
+  .business-consulting-intro {
+    font-size: 1.2rem;
+  }
+
+  .wip-title {
+    font-size: 2rem;
+  }
+
+  .wip-message {
+    font-size: 1.1rem;
   }
 }
 

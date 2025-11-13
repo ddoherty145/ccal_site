@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Services() {
   useEffect(() => {
@@ -42,7 +43,7 @@ function Services() {
           <div className="service-focus">
             <strong>Focus:</strong> deal origination, due diligence, portfolio management, and exit strategy.
           </div>
-          <button className="service-cta">View Our Investment Portfolio →</button>
+          <Link to="/work-in-progress" className="service-cta">View Our Investment Portfolio →</Link>
         </div>
 
         {/* Service B: Foreign Investment Representation */}
@@ -63,7 +64,7 @@ function Services() {
             Our local insight ensures each deal aligns with both investor goals and sustainable development
             outcomes.
           </p>
-          <button className="service-cta">Discover Partnership Opportunities →</button>
+          <Link to="/work-in-progress" className="service-cta">Discover Partnership Opportunities →</Link>
         </div>
 
         {/* Service C: Business & Market Entry Consulting */}
@@ -82,7 +83,7 @@ function Services() {
           <div className="service-focus">
             <strong>Areas of Focus:</strong> market intelligence, regulatory navigation, and business development strategy.
           </div>
-          <button className="service-cta">Expand Into Africa →</button>
+          <Link to="/business-consulting" className="service-cta">Expand Into Africa →</Link>
         </div>
 
         {/* Service D: Technology Consulting */}
@@ -133,7 +134,7 @@ function Services() {
               <li>Investment climate updates</li>
             </ul>
           </div>
-          <button className="service-cta">Access Research Reports →</button>
+          <Link to="/work-in-progress" className="service-cta">Access Research Reports →</Link>
         </div>
       </div>
     </section>

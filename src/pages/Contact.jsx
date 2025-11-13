@@ -7,6 +7,9 @@ function Contact() {
     company: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+  const [submitMessage, setSubmitMessage] = useState('')
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -25,12 +28,65 @@ function Contact() {
       ...formData,
       [e.target.name]: e.target.value
     })
+    // Clear status when user starts typing again
+    if (submitStatus) {
+      setSubmitStatus(null)
+      setSubmitMessage('')
+    }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    setSubmitMessage('')
+
+    try {
+      // FormSubmit endpoint - replace with your email
+      const formSubmitEmail = import.meta.env.VITE_FORM_SUBMIT_EMAIL || 'kev.stu@yahoo.com'
+      const formSubmitUrl = `https://formsubmit.co/ajax/${formSubmitEmail}`
+
+      const response = await fetch(formSubmitUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          message: formData.message,
+          _subject: `New Contact Form Submission from ${formData.name}`,
+          _template: 'table',
+          _captcha: false,
+          _from: 'ColumbusCapitalForm <noreply@formsubmit.co>'
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setSubmitStatus('success')
+        setSubmitMessage('Thank you for your message! We will get back to you soon.')
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(data.message || 'Failed to send message. Please try again later.')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+      setSubmitMessage('Failed to send message. Please try again later or contact us directly at info@columbuscapitalafrica.com')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -208,8 +264,18 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="form-submit-button">
-              Send Message
+            {submitStatus && (
+              <div className={`form-message ${submitStatus === 'success' ? 'success' : 'error'}`}>
+                {submitMessage}
+              </div>
+            )}
+
+            <button 
+              type="submit" 
+              className="form-submit-button"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

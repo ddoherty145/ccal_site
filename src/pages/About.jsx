@@ -74,10 +74,6 @@ function About() {
               </li>
             </ul>
           </div>
-          
-          <div className="about-cta">
-            <button className="cta-button primary">Learn More About Us</button>
-          </div>
         </div>
       </div>
     </section>

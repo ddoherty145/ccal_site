@@ -138,12 +138,8 @@ function Knowledge() {
                   <div className="article-type-badge">{article.type}</div>
                 </div>
                 <div className="article-content">
-                  <div className="article-meta">
-                    <span className="article-date">{article.date}</span>
-                  </div>
                   <h3 className="article-title">{article.title}</h3>
                   <p className="article-excerpt">{article.excerpt}</p>
-                  <a href="#" className="article-read-more">Read More →</a>
                 </div>
               </article>
             ))}

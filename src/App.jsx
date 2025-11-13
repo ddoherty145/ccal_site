@@ -9,6 +9,8 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Knowledge from './pages/Knowledge'
 import Contact from './pages/Contact'
+import BusinessConsulting from './pages/BusinessConsulting'
+import WorkInProgress from './pages/WorkInProgress'
 
 function Layout({ children }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -127,6 +129,8 @@ function App() {
         <Route path="/services" element={<Layout><Services /></Layout>} />
         <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
+        <Route path="/business-consulting" element={<Layout><BusinessConsulting /></Layout>} />
+        <Route path="/work-in-progress" element={<Layout><WorkInProgress /></Layout>} />
       </Routes>
     </BrowserRouter>
   )
