@@ -42,8 +42,8 @@ function Contact() {
     setSubmitMessage('')
 
     try {
-      // FormSubmit endpoint - replace with your email
-      const formSubmitEmail = import.meta.env.VITE_FORM_SUBMIT_EMAIL || 'kev.stu@yahoo.com'
+      // FormSubmit endpoint - uses environment variable or production email
+      const formSubmitEmail = import.meta.env.VITE_FORM_SUBMIT_EMAIL || 'info@columbuscapitalafrica.com'
       const formSubmitUrl = `https://formsubmit.co/ajax/${formSubmitEmail}`
 
       const response = await fetch(formSubmitUrl, {
