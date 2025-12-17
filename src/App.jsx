@@ -9,6 +9,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Knowledge from './pages/Knowledge'
 import Contact from './pages/Contact'
+import Updates from './pages/Updates'
 import BusinessConsulting from './pages/BusinessConsulting'
 import WorkInProgress from './pages/WorkInProgress'
 
@@ -65,6 +66,7 @@ function Layout({ children }) {
             <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link></li>
             <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Our Services</Link></li>
             <li><Link to="/knowledge" onClick={() => setIsMobileMenuOpen(false)}>Knowledge Hub</Link></li>
+            <li><Link to="/updates" onClick={() => setIsMobileMenuOpen(false)}>Updates</Link></li>
             <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link></li>
           </ul>
         </div>
@@ -128,6 +130,7 @@ function App() {
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/services" element={<Layout><Services /></Layout>} />
         <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
+        <Route path="/updates" element={<Layout><Updates /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/business-consulting" element={<Layout><BusinessConsulting /></Layout>} />
         <Route path="/work-in-progress" element={<Layout><WorkInProgress /></Layout>} />

@@ -43,7 +43,7 @@ function Contact() {
 
     try {
       // FormSubmit endpoint - uses environment variable or production email
-      const formSubmitEmail = import.meta.env.VITE_FORM_SUBMIT_EMAIL || 'info@columbuscapitalafrica.com'
+      const formSubmitEmail = import.meta.env.VITE_FORM_SUBMIT_EMAIL || 'info@columbusadvisorsltd.com'
       const formSubmitUrl = `https://formsubmit.co/ajax/${formSubmitEmail}`
 
       const response = await fetch(formSubmitUrl, {
@@ -83,7 +83,7 @@ function Contact() {
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
-      setSubmitMessage('Failed to send message. Please try again later or contact us directly at info@columbuscapitalafrica.com')
+      setSubmitMessage('Failed to send message. Please try again later or contact us directly at info@columbusadvisorsltd.com')
     } finally {
       setIsSubmitting(false)
     }
@@ -131,7 +131,7 @@ function Contact() {
               </div>
               <div className="contact-item-content">
                 <h3>Email</h3>
-                <a href="mailto:info@columbuscapitalafrica.com">info@columbuscapitalafrica.com</a>
+                <a href="mailto:info@columbusadvisorsltd.com">info@columbusadvisorsltd.com</a>
               </div>
             </div>
 
@@ -145,8 +145,8 @@ function Contact() {
               </div>
               <div className="contact-item-content">
                 <h3>Website</h3>
-                <a href="https://www.columbuscapitalafrica.com" target="_blank" rel="noopener noreferrer">
-                  www.columbuscapitalafrica.com
+                <a href="https://www.columbusadvisorsltd.com" target="_blank" rel="noopener noreferrer">
+                  www.columbusadvisorsltd.com
                 </a>
               </div>
             </div>
