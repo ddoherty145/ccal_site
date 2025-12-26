@@ -3,6 +3,10 @@ import { useEffect, useMemo, useState } from 'react'
 import img6224 from '../assets/images/SIP/IMG_6224.jpg'
 import img6228 from '../assets/images/SIP/IMG_6228.jpg'
 import img6271 from '../assets/images/SIP/IMG_6271.jpg'
+import img6293 from '../assets/images/SIP/IMG_6293.jpg'
+import img6355 from '../assets/images/SIP/IMG_6355.jpg'
+import img6359 from '../assets/images/SIP/IMG_6359.jpg'
+import img7786 from '../assets/images/SIP/IMG_7786.jpg'
 
 function Updates() {
   const [selectedArticle, setSelectedArticle] = useState(null)
@@ -32,8 +36,8 @@ function Updates() {
       displayDate: 'November 2025', // How you want it displayed
       category: 'News', // Options: News, Announcement, Event, Publication, Partnership
       excerpt: 'As part of South Korea Immersion Program',
-      image: 'src/assets/images/SIP/IMG_6293.jpg', // Main image (shown in card)
-      images: ['src/assets/images/SIP/IMG_6355.jpg', 'src/assets/images/SIP/IMG_6359.jpg', 'src/assets/images/SIP/IMG_7786.jpg'], // Additional images for the carousel
+      image: img6293, // Main image (shown in card)
+      images: [img6355, img6359, img7786], // Additional images for the carousel
       content: "As part of the South Korea immersion program, participants attended an academic session on doing business in South Korea at Korea University. The course provided practical insights into Korean business culture, corporate governance, negotiation norms, and market entry strategies, complementing company visits and strategic discussions with global firms. The session reinforced the program’s emphasis on experiential learning and cross-border business competence." // Optional: full article text for modal
     }
   ]
@@ -270,12 +274,14 @@ function Updates() {
                       </button>
                     )}
 
-                    <div className="article-carousel-slide-container">
+                    <div 
+                      className="article-carousel-slide-container"
+                      style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                    >
                       {allImages.map((img, index) => (
                         <div
                           key={index}
-                          className={`article-carousel-slide ${index === currentImageIndex ? 'active' : ''}`}
-                          style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                          className="article-carousel-slide"
                         >
                           <img src={img.src} alt={img.alt} />
                         </div>
