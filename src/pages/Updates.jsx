@@ -283,7 +283,18 @@ function Updates() {
                           key={index}
                           className="article-carousel-slide"
                         >
-                          <img src={img.src} alt={img.alt} />
+                          <img 
+                            src={img.src} 
+                            alt={img.alt}
+                            loading="eager"
+                            onError={(e) => {
+                              console.error('Image failed to load:', img.src);
+                              e.target.style.display = 'none';
+                            }}
+                            onLoad={() => {
+                              console.log('Image loaded successfully:', img.src);
+                            }}
+                          />
                         </div>
                       ))}
                     </div>
