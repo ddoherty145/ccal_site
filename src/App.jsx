@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
 import './App.css'
-// import './App.css'        - Original layout
-// import './App-alt.css'     - Alternative layout
-// import './App-modern.css'  - Modern layout
+import { AuthProvider } from './firebase/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -14,6 +13,9 @@ import Contact from './pages/Contact'
 import Updates from './pages/Updates'
 import BusinessConsulting from './pages/BusinessConsulting'
 import WorkInProgress from './pages/WorkInProgress'
+import Login from './pages/Login'
+import Admin from './pages/Admin'
+import ArticleEditor from './pages/ArticleEditor'
 
 function Layout({ children }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -128,20 +130,28 @@ function Layout({ children }) {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/about" element={<Layout><About /></Layout>} />
-        <Route path="/services" element={<Layout><Services /></Layout>} />
-        <Route path="/why-africa" element={<Layout><WhyAfrica /></Layout>} />
-        <Route path="/projects" element={<Layout><Projects /></Layout>} />
-        <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
-        <Route path="/updates" element={<Layout><Updates /></Layout>} />
-        <Route path="/contact" element={<Layout><Contact /></Layout>} />
-        <Route path="/business-consulting" element={<Layout><BusinessConsulting /></Layout>} />
-        <Route path="/work-in-progress" element={<Layout><WorkInProgress /></Layout>} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout><Home /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
+          <Route path="/services" element={<Layout><Services /></Layout>} />
+          <Route path="/why-africa" element={<Layout><WhyAfrica /></Layout>} />
+          <Route path="/projects" element={<Layout><Projects /></Layout>} />
+          <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
+          <Route path="/updates" element={<Layout><Updates /></Layout>} />
+          <Route path="/contact" element={<Layout><Contact /></Layout>} />
+          <Route path="/business-consulting" element={<Layout><BusinessConsulting /></Layout>} />
+          <Route path="/work-in-progress" element={<Layout><WorkInProgress /></Layout>} />
+          
+          {/* Admin Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+          <Route path="/admin/new" element={<ProtectedRoute><ArticleEditor /></ProtectedRoute>} />
+          <Route path="/admin/edit/:id" element={<ProtectedRoute><ArticleEditor /></ProtectedRoute>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 

@@ -1,46 +1,46 @@
 import { useEffect, useMemo, useState } from 'react'
-// Import images
-import img6224 from '../assets/images/SIP/IMG_6224.jpg'
-import img6228 from '../assets/images/SIP/IMG_6228.jpg'
-import img6271 from '../assets/images/SIP/IMG_6271.jpg'
-import img6293 from '../assets/images/SIP/IMG_6293.jpg'
-import img6355 from '../assets/images/SIP/IMG_6355.jpg'
-import img6359 from '../assets/images/SIP/IMG_6359.jpg'
-import img7786 from '../assets/images/SIP/IMG_7786.jpg'
+import { collection, getDocs, orderBy, query } from 'firebase/firestore'
+import { db } from '../firebase/config'
 
 function Updates() {
   const [selectedArticle, setSelectedArticle] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  // ============================================
-  // ADD NEW ARTICLES HERE - Just add a new object to this array!
-  // ============================================
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const articles = [
-    // Example article structure - copy and modify this for new articles
-    {
-      id: 1,
-      title: 'South Korea Immersion Program',
-      date: '2025-11-11', // Format: YYYY-MM-DD (for proper sorting)
-      displayDate: 'November 2025', // How you want it displayed
-      category: 'News', // Options: News, Announcement, Event, Publication, Partnership
-      excerpt: 'As part of South Korea Immersion Program',
-      image: img6224, // Main image (shown in card)
-      images: [img6228, img6271], // Additional images for the carousel
-      content: "As part of a South Korea immersion program organized by Dominican University of California, business school students participated in a company visit to AhnLab, a leading global cybersecurity firm. Columbus Advisors Limited joined the engagement by invitation to explore potential joint venture structures supporting AhnLab's strategic expansion into Nigeria and Africa." // Optional: full article text for modal
-    },
-    {
-      id: 2,
-      title: 'South Korea Immersion Program',
-      date: '2025-11-11', // Format: YYYY-MM-DD (for proper sorting)
-      displayDate: 'November 2025', // How you want it displayed
-      category: 'News', // Options: News, Announcement, Event, Publication, Partnership
-      excerpt: 'As part of South Korea Immersion Program',
-      image: img6293, // Main image (shown in card)
-      images: [img6355, img6359, img7786], // Additional images for the carousel
-      content: "As part of the South Korea immersion program, participants attended an academic session on doing business in South Korea at Korea University. The course provided practical insights into Korean business culture, corporate governance, negotiation norms, and market entry strategies, complementing company visits and strategic discussions with global firms. The session reinforced the program’s emphasis on experiential learning and cross-border business competence." // Optional: full article text for modal
+  // Fetch articles from Firebase
+  useEffect(() => {
+    fetchArticles()
+  }, [])
+
+  async function fetchArticles() {
+    try {
+      const articlesQuery = query(
+        collection(db, 'articles'),
+        orderBy('date', 'desc')
+      )
+      const querySnapshot = await getDocs(articlesQuery)
+      const articlesData = querySnapshot.docs.map(doc => {
+        const data = doc.data()
+        return {
+          id: doc.id,
+          title: data.title,
+          date: data.date,
+          displayDate: data.displayDate,
+          category: data.category,
+          excerpt: data.excerpt,
+          content: data.content,
+          image: data.imageUrl, // Map imageUrl to image for compatibility
+          images: data.additionalImageUrls || [] // Additional images for carousel
+        }
+      })
+      setArticles(articlesData)
+    } catch (error) {
+      console.error('Error fetching articles:', error)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
 
   // Sort articles by date (newest first)
   const sortedArticles = useMemo(() => {
@@ -127,7 +127,11 @@ function Updates() {
       </div>
 
       <div className="updates-container">
-        {sortedArticles.length === 0 ? (
+        {loading ? (
+          <div className="updates-loading">
+            <p>Loading articles...</p>
+          </div>
+        ) : sortedArticles.length === 0 ? (
           <div className="updates-empty">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginBottom: '1.5rem', opacity: 0.5 }}>
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -287,13 +291,6 @@ function Updates() {
                             src={img.src} 
                             alt={img.alt}
                             loading="eager"
-                            onError={(e) => {
-                              console.error('Image failed to load:', img.src);
-                              e.target.style.display = 'none';
-                            }}
-                            onLoad={() => {
-                              console.log('Image loaded successfully:', img.src);
-                            }}
                           />
                         </div>
                       ))}
@@ -360,4 +357,3 @@ function Updates() {
 }
 
 export default Updates
-
