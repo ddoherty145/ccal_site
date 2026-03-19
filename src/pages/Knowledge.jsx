@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Knowledge() {
   useEffect(() => {
@@ -73,7 +74,7 @@ function Knowledge() {
             Stay informed with our latest research, investment insights, and commentary on Africa's
             evolving economic landscape.
           </p>
-          <button className="knowledge-cta-primary">Read the Latest Insights →</button>
+          <Link to="/updates" className="knowledge-cta-primary">Read the Latest Insights →</Link>
         </div>
       </div>
 
