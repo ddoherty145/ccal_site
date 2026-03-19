@@ -24,6 +24,9 @@ function Home() {
           Columbus Capital Advisors Limited is an Africa-focused investment advisory and capital strategy firm facilitating cross-border investment into Sub-Saharan Africa's frontier and emerging markets.
         </p>
         <p className="hero-subtext">
+          We advise global companies and investors on structuring and executing market entry and investment strategies across Sub-Saharan Africa.
+        </p>
+        <p className="hero-subtext">
           We advise institutional investors, family offices, development finance institutions, and multinational companies seeking credible investment opportunities and strategic partnerships across the continent. Our work spans deal origination, investment structuring, and market entry advisory across high-growth sectors including infrastructure, energy, technology, real estate, and agriculture.
         </p>
         <p className="hero-subtext">

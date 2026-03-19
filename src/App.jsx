@@ -12,6 +12,8 @@ import Knowledge from './pages/Knowledge'
 import Contact from './pages/Contact'
 import Updates from './pages/Updates'
 import BusinessConsulting from './pages/BusinessConsulting'
+import DigitalEconomy from './pages/DigitalEconomy'
+import SelectedEngagements from './pages/SelectedEngagements'
 import WorkInProgress from './pages/WorkInProgress'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
@@ -142,6 +144,8 @@ function App() {
           <Route path="/updates" element={<Layout><Updates /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
           <Route path="/business-consulting" element={<Layout><BusinessConsulting /></Layout>} />
+          <Route path="/digital-economy" element={<Layout><DigitalEconomy /></Layout>} />
+          <Route path="/selected-engagements" element={<Layout><SelectedEngagements /></Layout>} />
           <Route path="/work-in-progress" element={<Layout><WorkInProgress /></Layout>} />
           
           {/* Admin Routes */}

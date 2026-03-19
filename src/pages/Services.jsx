@@ -64,6 +64,7 @@ function Services() {
           <p className="service-description">
             Advising international companies expanding into African markets.
           </p>
+          <Link to="/business-consulting" className="service-cta">Learn More →</Link>
         </div>
 
         {/* Service 4: Research & Intelligence */}
@@ -83,7 +84,7 @@ function Services() {
           </p>
         </div>
 
-        {/* Service 5: Technology & Digital Economy Advisory */}
+        {/* Service 5: Digital Economy & Technology Investment Advisory */}
         <div className="service-card service-light">
           <div className="service-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -92,7 +93,7 @@ function Services() {
               <line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <h2 className="service-name">Technology & Digital Economy Advisory</h2>
+          <h2 className="service-name">Digital Economy & Technology Investment Advisory</h2>
           <p className="service-description">
             Supporting investment opportunities in Africa's digital economy including:
           </p>
@@ -102,6 +103,22 @@ function Services() {
             <li>Digital infrastructure</li>
             <li>Technology transfer partnerships</li>
           </ul>
+          <Link to="/digital-economy" className="service-cta">Learn More →</Link>
+        </div>
+
+        {/* Service 6: Selected Engagements */}
+        <div className="service-card service-dark">
+          <div className="service-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <h2 className="service-name">Selected Engagements</h2>
+          <p className="service-description">
+            Active investment structuring and facilitation projects across Sub-Saharan Africa with governments, investors, and private sector partners.
+          </p>
+          <Link to="/selected-engagements" className="service-cta">View Engagements →</Link>
         </div>
       </div>
 
@@ -126,12 +143,12 @@ function Services() {
           <div className="cta-grid">
             <div className="cta-card">
               <h3 className="cta-card-title">For Investors</h3>
-              <p className="cta-card-text">Explore investment partnerships in Africa.</p>
+              <p className="cta-card-text">Explore investment opportunities in Africa.</p>
               <Link to="/contact" className="cta-card-button">Get in Touch</Link>
             </div>
             <div className="cta-card">
               <h3 className="cta-card-title">For Companies</h3>
-              <p className="cta-card-text">Discuss market entry opportunities.</p>
+              <p className="cta-card-text">Discuss your market entry strategy.</p>
               <Link to="/contact" className="cta-card-button">Contact Us</Link>
             </div>
             <div className="cta-card">
