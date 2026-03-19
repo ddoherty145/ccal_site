@@ -25,13 +25,13 @@ function About() {
         <div className="about-content">
           <h2 className="about-title">Who We Are</h2>
           <p className="about-intro">
-            Cloumbus Capital Advisors Limited is an Africa-focused investment advisory and capital strategy firm that connects global capital with high-growth opportunities across Sub-Saharan Africa.
+            Columbus Capital Advisors Limited is an Africa-focused investment advisory and capital strategy firm that connects global capital with high-growth opportunities across Sub-Saharan Africa.
           </p>
           
           <div className="mission-statement">
             <h3 className="mission-title">We Help:</h3>
             <p className="mission-text">
-              We help global companies enter African markets through market intellignece, regulatory
+              We help global companies enter African markets through market intelligence, regulatory
               navigation, and partnership development.
             </p>
           </div>
