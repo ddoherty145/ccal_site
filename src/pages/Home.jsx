@@ -18,12 +18,22 @@ function Home() {
       </div>
       <div className="hero-content">
         <h1 className="hero-headline">
-          Empowering Investment in Africa's Frontier and Emerging Markets
+          Connecting Global Caqpital with Africa's Next Generation of Growth
         </h1>
         <p className="hero-subtext">
-          Columbus Capital Advisors Limited is a Pan-African asset management and private
-          equity firm that connects global capital to Africa's most promising investment opportunities
-          through deep research, local expertise, and strategic partnerships.
+          Columbus Capital Advisors Limited is an Africa-focused investment advisory and capital strategy firm facilating cross-border investment into SubSaharan Afric's frontier and emerging markets.
+        </p>
+        <p className="hero-subtext">
+          We advise institutional investors, family offices, development finance institutions, and multinational companies seeking credible investment opportunities and strategic partnerships across the continent. Our work spans deal origination, investment structuring, and market entry advisory across high-growth sectors including infrastructure, energy, technology, real estate, and agriculture.
+        </p>
+        <p className="hero-subtext">
+          Combining rigorous market intelligence with deep local networks, Cloubus Capital Advisors helps global investors navigate complex regulatory environments, identify credible partners, and deploy capital responsibly.
+        </p>
+        <p className="hero-subtext">
+          The firm also works with governments and private operators to structure investment partnerships that enable sustainable foreign direct investment and long-term economic development.
+        </p>
+        <p className="hero-subtext">
+          Colubus Capital Advisors serves as a trusted bridge between global capital and Africa's evolving investment landscape.
         </p>
         <div className="hero-cta">
           <Link to="/services" className="cta-button primary">Explore Our Services</Link>

@@ -7,6 +7,8 @@ import './App.css'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
+import Projects from './pages/Projects'
+import WhyAfrica from './pages/WhyAfrica'
 import Knowledge from './pages/Knowledge'
 import Contact from './pages/Contact'
 import Updates from './pages/Updates'
@@ -64,7 +66,9 @@ function Layout({ children }) {
           <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
             <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
             <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link></li>
-            <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Our Services</Link></li>
+            <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>What We Do</Link></li>
+            <li><Link to="/why-africa" onClick={() => setIsMobileMenuOpen(false)}>Why Africa</Link></li>
+            <li><Link to="/projects" onClick={() => setIsMobileMenuOpen(false)}>Projects</Link></li>
             <li><Link to="/knowledge" onClick={() => setIsMobileMenuOpen(false)}>Knowledge Hub</Link></li>
             <li><Link to="/updates" onClick={() => setIsMobileMenuOpen(false)}>Updates</Link></li>
             <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link></li>
@@ -129,6 +133,8 @@ function App() {
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/services" element={<Layout><Services /></Layout>} />
+        <Route path="/why-africa" element={<Layout><WhyAfrica /></Layout>} />
+        <Route path="/projects" element={<Layout><Projects /></Layout>} />
         <Route path="/knowledge" element={<Layout><Knowledge /></Layout>} />
         <Route path="/updates" element={<Layout><Updates /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />

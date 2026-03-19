@@ -653,3 +653,162 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Projects Page Styles */
+.projects-section {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  background: linear-gradient(135deg, var(--navy-blue) 0%, var(--deep-navy) 100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-main-title {
+  font-size: 3rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.projects-content {
+  display: grid;
+  gap: 4rem;
+}
+
+.current-projects,
+.current-engagements {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.current-projects:hover,
+.current-engagements:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+}
+
+.projects-subtitle {
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.projects-list li {
+  color: var(--white);
+  font-size: 1.1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  position: relative;
+  padding-left: 2rem;
+  line-height: 1.6;
+}
+
+.projects-list li:last-child {
+  border-bottom: none;
+}
+
+.projects-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.engagements-intro {
+  color: var(--white);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.engagements-examples {
+  margin-top: 2rem;
+}
+
+.examples-title {
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.engagements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.engagements-list li {
+  color: var(--white);
+  font-size: 1.05rem;
+  padding: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.engagements-list li:last-child {
+  border-bottom: none;
+}
+
+.engagements-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .projects-main-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .current-projects,
+  .current-engagements {
+    padding: 2rem;
+  }
+
+  .projects-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .projects-list li,
+  .engagements-list li {
+    font-size: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .engagements-intro {
+    font-size: 1rem;
+  }
+}
+

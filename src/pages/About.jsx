@@ -25,16 +25,14 @@ function About() {
         <div className="about-content">
           <h2 className="about-title">Who We Are</h2>
           <p className="about-intro">
-            Columbus Capital Advisors Limited (CCAL) is an independent investment and advisory firm
-            focused on Sub-Saharan Africa. We specialize in helping institutional investors, family offices,
-            and corporations navigate Africa's frontier and emerging markets with confidence.
+            Cloumbus Capital Advisors Limited is an Africa-focused investment advisory and capital strategy firm that connects global capital with high-growth opportunities across Sub-Saharan Africa.
           </p>
           
           <div className="mission-statement">
-            <h3 className="mission-title">Mission Statement</h3>
+            <h3 className="mission-title">We Help:</h3>
             <p className="mission-text">
-              To deliver world-class research, investment management, and consulting solutions that drive
-              sustainable growth and cross-border capital flows into Africa.
+              We help global companies enter African markets through market intellignece, regulatory
+              navigation, and partnership development.
             </p>
           </div>
           
@@ -43,34 +41,37 @@ function About() {
             <ul className="strengths-list">
               <li className="strength-item">
                 <svg className="strength-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
-                <span>Deep local knowledge and networks across West Africa.</span>
+                <span>Advisory for institutional investors, family offices, DFIs, and multinationals</span>
               </li>
               <li className="strength-item">
                 <svg className="strength-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                  <polyline points="10 9 9 9 8 9"/>
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
                 </svg>
-                <span>Proprietary market intelligence and research.</span>
+                <span>Deal origination and structuring across infrastructure, energy, tech, real estate, and agriculture</span>
               </li>
               <li className="strength-item">
                 <svg className="strength-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 16v-4"/>
+                  <path d="M12 8h.01"/>
+                  <path d="M2 12h2"/>
+                  <path d="M20 12h2"/>
+                  <path d="M12 2v2"/>
+                  <path d="M12 20v2"/>
                 </svg>
-                <span>Trusted relationships with DFIs, family offices, and private investors.</span>
+                <span>Market intelligence and local networks to navigate complex regulatory environments</span>
               </li>
               <li className="strength-item">
                 <svg className="strength-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="12" y1="2" x2="12" y2="22"/>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
-                <span>End-to-end investment facilitation and advisory.</span>
+                <span>Government and private sector partnerships for sustainable foreign direct investment</span>
               </li>
             </ul>
           </div>

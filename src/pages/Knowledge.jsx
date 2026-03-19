@@ -16,51 +16,51 @@ function Knowledge() {
   const articles = [
     {
       id: 1,
-      type: 'Quarterly Market Outlook',
-      title: 'Q4 2024 Africa Investment Outlook',
-      excerpt: 'An in-depth analysis of investment opportunities and market trends across Sub-Saharan Africa for the final quarter of 2024.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'October 2024'
+      type: 'Infrastructure Investment',
+      title: 'Investing in Nigeria\'s Infrastructure Gap',
+      excerpt: 'An analysis of Nigeria\'s infrastructure deficit and the investment opportunities it presents for foreign capital and development finance institutions.',
+      image: 'https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      date: 'March 2026'
     },
     {
       id: 2,
       type: 'Sector Spotlight',
-      title: 'Energy Sector Transformation in West Africa',
-      excerpt: 'Exploring the rapid growth of renewable energy infrastructure and investment opportunities in Nigeria, Ghana, and Senegal.',
-      image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'September 2024'
+      title: 'Africa\'s Biotech Manufacturing Opportunity',
+      excerpt: 'Exploring the emerging biotechnology and pharmaceutical manufacturing sector across Africa and the strategic importance of local production capacity.',
+      image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      date: 'March 2026'
     },
     {
       id: 3,
-      type: 'Country Investment Guide',
-      title: 'Investing in Ghana: A Comprehensive Guide',
-      excerpt: 'A detailed guide to navigating Ghana\'s investment landscape, regulatory framework, and emerging opportunities.',
-      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'September 2024'
+      type: 'Capital Flows',
+      title: 'Diaspora Capital and the Future of African Development',
+      excerpt: 'How diaspora investment and remittances are shaping Africa\'s economic future and creating new pathways for credible capital deployment.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      date: 'February 2026'
     },
     {
       id: 4,
-      type: 'Sector Spotlight',
-      title: 'Fintech Revolution in East Africa',
-      excerpt: 'How mobile money and digital banking are reshaping financial services and creating new investment opportunities.',
+      type: 'Development Finance',
+      title: 'The Role of DFIs in African Private Investment',
+      excerpt: 'Understanding how Development Finance Institutions are catalyzing private sector investment and de-risking capital deployment across the continent.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'August 2024'
+      date: 'February 2026'
     },
     {
       id: 5,
-      type: 'Case Study',
-      title: 'Infrastructure Development Success Story',
-      excerpt: 'A detailed case study of a successful port infrastructure project in West Africa and its economic impact.',
-      image: 'https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'August 2024'
+      type: 'Quarterly Market Outlook',
+      title: 'Q1 2026 Africa Investment Outlook',
+      excerpt: 'An in-depth analysis of investment opportunities and market trends across Sub-Saharan Africa for the first quarter of 2026.',
+      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      date: 'January 2026'
     },
     {
       id: 6,
       type: 'Sector Spotlight',
-      title: 'Real Estate Investment Opportunities',
-      excerpt: 'Analyzing the growing demand for commercial and residential real estate across major African cities.',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'July 2024'
+      title: 'Energy Sector Transformation in West Africa',
+      excerpt: 'Exploring the rapid growth of renewable energy infrastructure and investment opportunities in Nigeria, Ghana, and Senegal.',
+      image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      date: 'December 2025'
     }
   ]
 
