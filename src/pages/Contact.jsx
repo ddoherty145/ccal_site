@@ -8,8 +8,20 @@ function Contact() {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+  const [submitStatus, setSubmitStatus] = useState(null)
   const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleScheduleConsultation = () => {
+    const subject = encodeURIComponent('Schedule a Consultation - Columbus Capital Advisors')
+    const body = encodeURIComponent('Hello,\n\nI would like to schedule a consultation to discuss:\n\n[Please describe your investment interests or market entry needs]\n\nBest regards,')
+    window.location.href = `mailto:info@columbusadvisorsltd.com?subject=${subject}&body=${body}`
+  }
+
+  const handleRequestInfo = () => {
+    const subject = encodeURIComponent('Request for Information - Columbus Capital Advisors')
+    const body = encodeURIComponent('Hello,\n\nI am interested in learning more about:\n\n[Please describe what information you are seeking]\n\nBest regards,')
+    window.location.href = `mailto:info@columbusadvisorsltd.com?subject=${subject}&body=${body}`
+  }
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -117,7 +129,21 @@ function Contact() {
                 </svg>
               </div>
               <div className="contact-item-content">
-                <h3>Head Office</h3>
+                <h3>Office Address</h3>
+                <p>333 North Sunshine Way, Suite 1015</p>
+                <p>Palm Springs CA. 92262-9998</p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <div className="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div className="contact-item-content">
+                <h3>Global Presence</h3>
                 <p>Lagos | London | California</p>
               </div>
             </div>
@@ -152,8 +178,18 @@ function Contact() {
             </div>
 
             <div className="contact-cta-buttons">
-              <button className="contact-cta primary">Schedule a Consultation</button>
-              <button className="contact-cta secondary">Request More Information</button>
+              <button 
+                className="contact-cta primary" 
+                onClick={handleScheduleConsultation}
+              >
+                Schedule a Consultation
+              </button>
+              <button 
+                className="contact-cta secondary" 
+                onClick={handleRequestInfo}
+              >
+                Request More Information
+              </button>
             </div>
           </div>
 
