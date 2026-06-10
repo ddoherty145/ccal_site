@@ -126,7 +126,7 @@ function Services() {
       <div className="architect-section">
         <div className="architect-container">
           <h2 className="architect-title">A cross-border investment architect.</h2>
-          <p className="architect-subtitle">You structure deals between:</p>
+          <p className="architect-subtitle">We structure deals between:</p>
           <div className="architect-grid">
             <div className="architect-item">Investors</div>
             <div className="architect-item">Governments</div>
