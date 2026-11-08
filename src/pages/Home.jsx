@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import './columbus.css'
 
-function TopicButton({ id, open, onToggle, kicker, title }) {
+function TopicButton({ id, open, onToggle, kicker, title, popup = true }) {
   return (
     <h3>
       <button
         type="button"
         className="topic-toggle"
-        aria-haspopup="dialog"
+        aria-haspopup={popup ? 'dialog' : undefined}
         aria-expanded={open}
         aria-controls={`${id}-panel`}
         onClick={onToggle}
       >
         {kicker ? <span className="card-kicker">{kicker}</span> : null}
         <span className="topic-name">{title}</span>
-        <span className="topic-mark" aria-hidden="true">+</span>
+        <span className="topic-mark" aria-hidden="true">{popup || !open ? '+' : '−'}</span>
       </button>
     </h3>
   )
@@ -98,6 +98,26 @@ function Capability({ id, className = '', index, icon, kicker, title, children }
       >
         {children}
       </TopicDialog>
+    </article>
+  )
+}
+
+function ApproachStep({ id, index, title, children }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <article className={open ? 'is-open' : undefined}>
+      <span>{index}</span>
+      <TopicButton
+        id={id}
+        open={open}
+        popup={false}
+        onToggle={() => setOpen((value) => !value)}
+        title={title}
+      />
+      <div id={`${id}-panel`} className="approach-detail" hidden={!open}>
+        {children}
+      </div>
     </article>
   )
 }
@@ -461,9 +481,42 @@ export default function Home() {
             <h2>A practical path from<br />idea to execution.</h2>
           </div>
           <div className="approach-steps">
-            <article><span>01</span><h3>Define &amp; validate</h3><p>Clarify the thesis, assess the market, and establish what must be true for the opportunity to succeed.</p></article>
-            <article><span>02</span><h3>Structure &amp; align</h3><p>Shape the commercial model, partner roles, transaction roadmap, and financing requirements.</p></article>
-            <article><span>03</span><h3>Capitalize &amp; execute</h3><p>Prepare the opportunity for capital, engage relevant parties, and coordinate momentum through closing.</p></article>
+            <ApproachStep id="define" index="01" title="Define & Validate">
+              <p>
+                We begin by understanding the opportunity, the problem it addresses, and the commercial or development outcome it is expected to achieve.
+              </p>
+              <p>
+                We evaluate the market, sponsor capability, customer demand, financial assumptions, regulatory environment, and key risks to determine whether the opportunity is viable and what must be strengthened.
+              </p>
+              <p className="list-label">The outcome</p>
+              <p>
+                A clearly defined opportunity, supported by credible assumptions and a practical path forward.
+              </p>
+            </ApproachStep>
+            <ApproachStep id="structure" index="02" title="Structure & Align">
+              <p>
+                Once the opportunity is validated, we develop the appropriate commercial, financial, and partnership structure.
+              </p>
+              <p>
+                We clarify the roles of sponsors, investors, lenders, technical partners, government institutions, and other stakeholders. We also help establish the transaction structure, risk allocation, capital requirements, implementation plan, and governance framework.
+              </p>
+              <p className="list-label">The outcome</p>
+              <p>
+                A bankable structure with aligned stakeholders, defined responsibilities, and clear transaction economics.
+              </p>
+            </ApproachStep>
+            <ApproachStep id="capitalize" index="03" title="Capitalize & Execute">
+              <p>
+                We prepare the opportunity for engagement with suitable banks, investors, development finance institutions, strategic partners, and other capital providers.
+              </p>
+              <p>
+                Columbus Advisors coordinates presentations, due diligence, negotiations, documentation, and closing activities while helping the parties maintain momentum through implementation.
+              </p>
+              <p className="list-label">The outcome</p>
+              <p>
+                Capital and partners are brought together around an executable plan—moving the opportunity from concept to financial close and implementation.
+              </p>
+            </ApproachStep>
           </div>
         </div>
 
