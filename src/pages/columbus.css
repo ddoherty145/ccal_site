@@ -1,0 +1,842 @@
+.columbus {
+  --ink: #0d2133;
+  --navy: #09283e;
+  --blue: #0b3853;
+  --cream: #f5f1e9;
+  --paper: #fbfaf7;
+  --orange: #e66b31;
+  --gold: #d6a64a;
+  --line: rgba(13, 33, 51, 0.16);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.columbus a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.columbus a:hover {
+  color: inherit;
+}
+
+.columbus .site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 104px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 clamp(24px, 5vw, 80px);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.columbus .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-self: start;
+}
+
+.columbus .brand-mark {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: block;
+  transform: rotate(45deg);
+}
+
+.columbus .brand-mark i {
+  position: absolute;
+  display: block;
+  width: 19px;
+  height: 19px;
+  border: 2px solid #fff;
+}
+
+.columbus .brand-mark i:nth-child(1) { left: 0; top: 0; }
+.columbus .brand-mark i:nth-child(2) { right: 0; top: 0; border-color: var(--orange); }
+.columbus .brand-mark i:nth-child(3) { right: 0; bottom: 0; border-color: var(--gold); }
+
+.columbus .brand-copy {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.columbus .brand-copy b {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.columbus .site-header nav {
+  display: flex;
+  gap: 38px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.columbus .site-header nav a,
+.columbus .text-link {
+  transition: color 0.2s ease;
+}
+
+.columbus .site-header nav a:hover,
+.columbus .text-link:hover {
+  color: #fff;
+}
+
+.columbus .header-cta {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.columbus .arrow-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.columbus .hero {
+  position: relative;
+  min-height: 800px;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+  align-items: center;
+  padding: 138px clamp(24px, 7vw, 112px) 150px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 80% 42%, rgba(44, 111, 139, 0.42), transparent 30%),
+    radial-gradient(circle at 4% 100%, rgba(230, 107, 49, 0.12), transparent 32%),
+    linear-gradient(125deg, #081e2f 4%, #092c43 58%, #0b344d 100%);
+}
+
+.columbus .hero-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to right, transparent, #000);
+}
+
+.columbus .hero-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 740px;
+  padding-right: 30px;
+}
+
+.columbus .eyebrow {
+  margin: 0 0 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.21em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.columbus .eyebrow.light { color: #f3bc6b; }
+
+.columbus .hero h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(62px, 7.1vw, 112px);
+  line-height: 0.89;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+}
+
+.columbus .hero h1 span {
+  display: block;
+  color: #ef7740;
+  font-style: italic;
+  padding-left: clamp(35px, 6vw, 94px);
+}
+
+.columbus .hero-deck {
+  max-width: 650px;
+  margin: 34px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.62;
+}
+
+.columbus .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 38px;
+}
+
+.columbus .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: 0;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.columbus .button.primary {
+  color: #fff;
+  background: var(--orange);
+}
+
+.columbus .button:hover { transform: translateY(-2px); }
+.columbus .button.primary:hover { background: #f0783e; color: #fff; }
+
+.columbus .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.columbus .hero-visual {
+  position: relative;
+  z-index: 2;
+  width: min(46vw, 650px);
+  aspect-ratio: 1;
+  justify-self: end;
+}
+
+.columbus .globe-core {
+  position: absolute;
+  inset: 19%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: radial-gradient(circle at 37% 30%, rgba(124, 193, 211, 0.24), rgba(7, 31, 47, 0.35) 53%, rgba(3, 20, 32, 0.85));
+  box-shadow: inset -30px -26px 80px rgba(0, 0, 0, 0.35), 0 0 90px rgba(81, 157, 183, 0.15);
+}
+
+.columbus .globe-core::before,
+.columbus .globe-core::after {
+  content: "";
+  position: absolute;
+  inset: 8% 22%;
+  border-radius: 50%;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.columbus .globe-core::after {
+  inset: 48% 5% auto;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.columbus .africa-shape {
+  font-family: Georgia, serif;
+  font-size: clamp(52px, 7vw, 96px);
+  letter-spacing: -0.12em;
+  color: rgba(245, 187, 103, 0.18);
+  transform: translateX(-0.06em);
+}
+
+.columbus .orbit {
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  transform: rotate(18deg);
+}
+
+.columbus .orbit-two { inset: 3% 15%; transform: rotate(62deg); }
+.columbus .orbit-three { inset: 14% 2%; transform: rotate(-28deg); }
+
+.columbus .location-tag {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  color: rgba(255, 255, 255, 0.57);
+  font-size: 9px;
+}
+
+.columbus .location-tag i {
+  width: 7px;
+  height: 7px;
+  border: 2px solid #ef7740;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(239, 119, 64, 0.13);
+}
+
+.columbus .lagos { left: 9%; top: 56%; }
+.columbus .seoul { right: 1%; top: 26%; }
+.columbus .london { left: 24%; top: 10%; }
+.columbus .california { right: 4%; bottom: 21%; }
+
+.columbus .hero-proof {
+  position: absolute;
+  z-index: 4;
+  inset: auto clamp(24px, 7vw, 112px) 0;
+  height: 112px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.columbus .hero-proof > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.columbus .hero-proof > div + div { padding-left: 30px; }
+.columbus .hero-proof > div:last-child { border-right: 0; }
+
+.columbus .hero-proof span {
+  color: #ef7740;
+  font-family: Georgia, serif;
+  font-size: 16px;
+}
+
+.columbus .hero-proof p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  line-height: 1.55;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.columbus .capabilities {
+  padding: clamp(90px, 10vw, 150px) clamp(24px, 7vw, 112px);
+  background: var(--paper);
+}
+
+.columbus .section-heading {
+  display: grid;
+  grid-template-columns: 1.05fr 0.65fr;
+  gap: 10vw;
+  align-items: end;
+  margin-bottom: 70px;
+}
+
+.columbus .section-heading .eyebrow,
+.columbus .approach-heading .eyebrow { color: var(--orange); }
+
+.columbus .section-heading h2,
+.columbus .approach-heading h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  font-size: clamp(44px, 5vw, 74px);
+  line-height: 0.98;
+}
+
+.columbus .section-heading > p {
+  margin: 0 0 7px;
+  color: #5c6972;
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.columbus .capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.columbus .capability-card {
+  position: relative;
+  min-height: 570px;
+  padding: 40px clamp(28px, 4vw, 58px) 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.columbus .capability-card:hover {
+  z-index: 2;
+  transform: translateY(-4px);
+  box-shadow: 0 22px 60px rgba(13, 33, 51, 0.1);
+}
+
+.columbus .feature-card { background: #f1ede4; }
+.columbus .dark-card { background: var(--ink); color: #fff; }
+
+.columbus .card-index {
+  position: absolute;
+  top: 42px;
+  right: 42px;
+  color: #a19078;
+  font-family: Georgia, serif;
+  font-size: 15px;
+}
+
+.columbus .dark-card .card-index { color: #e07b4d; }
+
+.columbus .card-kicker {
+  margin: 0 0 16px;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.columbus .capability-card h3 {
+  margin: 0 0 22px;
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+}
+
+.columbus .capability-card > div > p:not(.card-kicker) {
+  max-width: 540px;
+  margin: 0;
+  color: #667178;
+  line-height: 1.72;
+  font-size: 15px;
+}
+
+.columbus .dark-card > div > p:not(.card-kicker) { color: rgba(255, 255, 255, 0.62); }
+
+.columbus .capability-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+}
+
+.columbus .capability-card li {
+  padding: 8px 10px;
+  border: 1px solid rgba(13, 33, 51, 0.12);
+  color: #657078;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.columbus .dark-card li {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.columbus .card-symbol {
+  position: relative;
+  width: 92px;
+  height: 90px;
+  margin-bottom: 32px;
+}
+
+.columbus .card-symbol span {
+  position: absolute;
+  display: block;
+  width: 55px;
+  height: 55px;
+  transform: rotate(45deg);
+  border: 1px solid var(--ink);
+}
+
+.columbus .card-symbol span:nth-child(1) { left: 0; top: 0; }
+.columbus .card-symbol span:nth-child(2) { left: 32px; top: 0; border-color: var(--orange); }
+.columbus .card-symbol span:nth-child(3) { left: 32px; top: 32px; border-color: var(--gold); }
+
+.columbus .mini-icon {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 7px 0 31px;
+}
+
+.columbus .compass { border: 1px solid #9eaaa9; border-radius: 50%; }
+
+.columbus .compass::before,
+.columbus .compass::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: #c0c7c4;
+  transform: rotate(42deg);
+}
+
+.columbus .compass::after { transform: rotate(-42deg); }
+
+.columbus .compass i {
+  position: absolute;
+  inset: 26px;
+  border: 1px solid var(--orange);
+  transform: rotate(45deg);
+}
+
+.columbus .links i {
+  position: absolute;
+  width: 50px;
+  height: 34px;
+  border: 1px solid #8a9899;
+  border-radius: 20px;
+  transform: rotate(-34deg);
+  top: 25px;
+  left: 5px;
+}
+
+.columbus .links i + i { left: 31px; border-color: var(--orange); }
+
+.columbus .structure i {
+  position: absolute;
+  display: block;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+  left: 2px;
+  top: 2px;
+}
+
+.columbus .structure i:nth-child(2) { left: 38px; border-color: var(--orange); }
+.columbus .structure i:nth-child(3) { left: 38px; top: 38px; border-color: var(--gold); }
+
+.columbus .platform-section { background: var(--ink); color: #fff; }
+
+.columbus .sector-panel {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 9vw;
+  padding: clamp(95px, 10vw, 150px) clamp(24px, 7vw, 112px);
+  background: linear-gradient(145deg, #0c2435, #0a334c);
+}
+
+.columbus .sector-intro {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+}
+
+.columbus .sector-intro h2,
+.columbus .contact-lead h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(45px, 5vw, 72px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.columbus .sector-intro h2 em { color: #ee7841; font-weight: 400; font-style: italic; }
+
+.columbus .sector-intro > p:last-child {
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.75;
+  margin-top: 30px;
+}
+
+.columbus .sector-list { border-top: 1px solid rgba(255, 255, 255, 0.17); }
+
+.columbus .sector-list > div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  column-gap: 18px;
+  padding: 31px 45px 31px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.columbus .sector-list span {
+  grid-row: 1 / 3;
+  color: #e97a48;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.columbus .sector-list h3 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(25px, 2.5vw, 35px);
+  line-height: 1.06;
+}
+
+.columbus .sector-list p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.columbus .sector-list > div::after {
+  content: "↗";
+  position: absolute;
+  right: 5px;
+  top: 34px;
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 18px;
+}
+
+.columbus .approach-panel {
+  padding: clamp(90px, 10vw, 145px) clamp(24px, 7vw, 112px);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.columbus .approach-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 64px;
+}
+
+.columbus .approach-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.columbus .approach-steps article {
+  padding: 36px 48px 0 0;
+  min-height: 220px;
+  border-right: 1px solid var(--line);
+}
+
+.columbus .approach-steps article + article { padding-left: 48px; }
+.columbus .approach-steps article:last-child { border-right: 0; }
+
+.columbus .approach-steps span {
+  color: var(--orange);
+  font-family: Georgia, serif;
+  font-size: 14px;
+}
+
+.columbus .approach-steps h3 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 22px 0 13px;
+}
+
+.columbus .approach-steps p {
+  color: #647078;
+  line-height: 1.67;
+  font-size: 14px;
+  max-width: 350px;
+  margin: 0;
+}
+
+.columbus .contact-panel {
+  padding: clamp(90px, 10vw, 145px) clamp(24px, 7vw, 112px) 50px;
+  background: #102d40;
+}
+
+.columbus .contact-lead {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.columbus .contact-lead .eyebrow { padding-top: 12px; }
+.columbus .contact-lead h2 { text-align: right; }
+
+.columbus .contact-pathways {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.columbus .contact-pathways a {
+  min-height: 315px;
+  padding: 38px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.25s ease;
+}
+
+.columbus .contact-pathways a:first-child { border-right: 1px solid rgba(255, 255, 255, 0.16); }
+.columbus .contact-pathways a:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+
+.columbus .contact-pathways span {
+  color: #ef8656;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.columbus .contact-pathways h3 {
+  max-width: 560px;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(26px, 2.5vw, 37px);
+  line-height: 1.16;
+  font-weight: 400;
+}
+
+.columbus .contact-pathways b {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.columbus .contact-note {
+  margin: 18px 0 0;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.columbus footer {
+  min-height: 135px;
+  padding: 34px clamp(24px, 7vw, 112px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  background: #081d2c;
+  color: rgba(255, 255, 255, 0.43);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.columbus .footer-brand { color: #fff; }
+.columbus .footer-brand .brand-mark { width: 30px; height: 30px; }
+.columbus .footer-brand .brand-mark i { width: 16px; height: 16px; }
+.columbus .footer-brand .brand-copy b { font-size: 16px; }
+.columbus footer > p { text-align: center; margin: 0; }
+.columbus footer > div { display: flex; gap: 25px; justify-content: flex-end; }
+.columbus footer > div a { color: #fff; }
+.columbus footer > div a:hover { color: #fff; }
+
+html:has(.columbus) { scroll-behavior: smooth; }
+
+@media (max-width: 900px) {
+  .columbus .site-header { grid-template-columns: 1fr auto; height: 88px; }
+  .columbus .site-header nav { display: none; }
+  .columbus .hero {
+    height: auto;
+    min-height: 900px;
+    grid-template-columns: 1fr;
+    padding-top: 145px;
+  }
+  .columbus .hero-copy { padding: 0; }
+  .columbus .hero-visual {
+    position: absolute;
+    width: 570px;
+    right: -250px;
+    top: 190px;
+    opacity: 0.62;
+  }
+  .columbus .hero-deck { max-width: 560px; }
+  .columbus .section-heading,
+  .columbus .sector-panel { grid-template-columns: 1fr; gap: 45px; }
+  .columbus .capability-card { min-height: 540px; }
+  .columbus .sector-intro { position: static; }
+  .columbus .approach-steps { grid-template-columns: 1fr; }
+  .columbus .approach-steps article,
+  .columbus .approach-steps article + article {
+    padding: 30px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    min-height: 0;
+  }
+  .columbus .contact-lead { display: block; }
+  .columbus .contact-lead h2 { text-align: left; }
+  .columbus .contact-pathways { grid-template-columns: 1fr; }
+  .columbus .contact-pathways a:first-child {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .columbus footer { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .columbus .footer-brand { justify-self: center; }
+  .columbus footer > div { justify-content: center; }
+}
+
+@media (max-width: 620px) {
+  .columbus .brand-copy b { font-size: 16px; }
+  .columbus .header-cta { font-size: 0; }
+  .columbus .header-cta .arrow-icon { width: 23px; height: 23px; }
+  .columbus .hero { min-height: 850px; padding-bottom: 158px; }
+  .columbus .hero h1 { font-size: clamp(54px, 17vw, 78px); }
+  .columbus .hero h1 span { padding-left: 24px; }
+  .columbus .hero-deck { font-size: 16px; }
+  .columbus .hero-actions { align-items: flex-start; flex-direction: column; gap: 22px; }
+  .columbus .hero-proof { height: 120px; inset: auto 20px 0; }
+  .columbus .hero-proof > div {
+    align-items: flex-start;
+    gap: 7px;
+    padding-top: 22px;
+    flex-direction: column;
+  }
+  .columbus .hero-proof > div + div { padding-left: 13px; }
+  .columbus .hero-proof p { font-size: 9px; }
+  .columbus .hero-visual { width: 480px; right: -295px; top: 255px; }
+  .columbus .capability-grid { grid-template-columns: 1fr; }
+  .columbus .capability-card { min-height: 530px; padding: 31px 26px; }
+  .columbus .card-index { top: 32px; right: 28px; }
+  .columbus .section-heading { margin-bottom: 42px; }
+  .columbus .section-heading h2,
+  .columbus .approach-heading h2 { font-size: 43px; }
+  .columbus .sector-list > div { grid-template-columns: 40px 1fr; }
+  .columbus .approach-heading { display: block; }
+  .columbus .contact-lead h2 { font-size: 43px; }
+  .columbus .contact-pathways a { min-height: 300px; padding: 30px 25px; }
+  .columbus .contact-note { text-align: left; line-height: 1.5; }
+  .columbus .sector-panel { padding-top: 90px; }
+  .columbus .sector-intro h2 { font-size: 43px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.columbus) { scroll-behavior: auto; }
+  .columbus .capability-card,
+  .columbus .button { transition: none; }
+}
