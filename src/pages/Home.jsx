@@ -1,4 +1,132 @@
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import './columbus.css'
+
+function TopicButton({ id, open, onToggle, kicker, title }) {
+  return (
+    <h3>
+      <button
+        type="button"
+        className="topic-toggle"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls={`${id}-panel`}
+        onClick={onToggle}
+      >
+        {kicker ? <span className="card-kicker">{kicker}</span> : null}
+        <span className="topic-name">{title}</span>
+        <span className="topic-mark" aria-hidden="true">+</span>
+      </button>
+    </h3>
+  )
+}
+
+function TopicDialog({ id, open, onClose, kicker, title, children }) {
+  const dialogRef = useRef(null)
+  const closingFromCode = useRef(false)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return undefined
+
+    const closeFromCode = () => {
+      if (!dialog.open) return
+      closingFromCode.current = true
+      dialog.close()
+    }
+
+    if (open && !dialog.open) dialog.showModal()
+    if (!open) closeFromCode()
+
+    return closeFromCode
+  }, [open])
+
+  return createPortal(
+    <div className="columbus">
+      <dialog
+        ref={dialogRef}
+        id={`${id}-panel`}
+        className="topic-dialog"
+        aria-labelledby={`${id}-title`}
+        onClose={() => {
+          if (closingFromCode.current) {
+            closingFromCode.current = false
+            return
+          }
+          onClose()
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close()
+        }}
+      >
+        <form method="dialog" className="topic-dialog-sheet">
+          <button type="submit" className="topic-close" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <header className="topic-dialog-head">
+            {kicker ? <p className="card-kicker">{kicker}</p> : null}
+            <h3 id={`${id}-title`}>{title}</h3>
+          </header>
+          <div className="topic-dialog-body">{children}</div>
+        </form>
+      </dialog>
+    </div>,
+    document.body
+  )
+}
+
+function Capability({ id, className = '', index, icon, kicker, title, children }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <article className={`capability-card ${className}`}>
+      <div className="card-index">{index}</div>
+      {icon}
+      <TopicButton
+        id={id}
+        open={open}
+        onToggle={() => setOpen(true)}
+        kicker={kicker}
+        title={title}
+      />
+      <TopicDialog
+        id={id}
+        open={open}
+        onClose={() => setOpen(false)}
+        kicker={kicker}
+        title={title}
+      >
+        {children}
+      </TopicDialog>
+    </article>
+  )
+}
+
+function Sector({ id, index, title, children }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <article>
+      <span>{index}</span>
+      <div>
+        <TopicButton
+          id={id}
+          open={open}
+          onToggle={() => setOpen(true)}
+          title={title}
+        />
+        <TopicDialog
+          id={id}
+          open={open}
+          onClose={() => setOpen(false)}
+          title={title}
+        >
+          {children}
+        </TopicDialog>
+      </div>
+    </article>
+  )
+}
 
 function Arrow({ diagonal = false }) {
   return (
@@ -104,83 +232,123 @@ export default function Home() {
         </div>
 
         <div className="capability-grid">
-          <article className="capability-card feature-card">
-            <div className="card-index">01</div>
-            <div className="card-symbol capital-symbol" aria-hidden="true">
-              <span /><span /><span />
-            </div>
-            <div>
-              <p className="card-kicker">Finance the opportunity</p>
-              <h3>Capital Raising &amp;<br />Transaction Advisory</h3>
+          <Capability
+            id="capital"
+            className="feature-card"
+            index="01"
+            kicker="Finance the opportunity"
+            title={<>Capital Raising &amp;<br />Transaction Advisory</>}
+            icon={<div className="card-symbol capital-symbol" aria-hidden="true"><span /><span /><span /></div>}
+          >
               <p>
-                We shape capital strategies, develop investor-ready narratives,
-                and coordinate targeted fundraising processes across debt,
-                equity, blended finance, and strategic capital.
+                Columbus Advisors helps businesses, project sponsors, and institutional partners prepare for and navigate complex capital-raising transactions across African and international markets.
               </p>
-            </div>
-            <ul>
-              <li>Capital stack design</li>
-              <li>Investor materials &amp; diligence</li>
-              <li>Investor targeting &amp; introductions</li>
-            </ul>
-          </article>
+              <p>
+                We assess capital requirements, strengthen investment propositions, develop appropriate funding strategies, and coordinate engagement with banks, development finance institutions, private equity firms, family offices, strategic investors, and other capital providers.
+              </p>
+              <p className="list-label">Our support may include</p>
+              <ul>
+                <li>Capital requirements and transaction-readiness assessment</li>
+                <li>Debt, equity, blended-finance, and structured-finance strategies</li>
+                <li>Financial models, investment memoranda, and lender presentations</li>
+                <li>Identification and engagement of suitable funding partners</li>
+                <li>Transaction coordination, due diligence, and negotiation support</li>
+                <li>Capital-stack design and financial-close planning</li>
+              </ul>
+              <p className="card-note">
+                Where regulated securities, placement, or underwriting services are required, Columbus works alongside appropriately licensed financial institutions and professional advisers.
+              </p>
+          </Capability>
 
-          <article className="capability-card">
-            <div className="card-index">02</div>
-            <div className="mini-icon compass" aria-hidden="true"><i /></div>
-            <div>
-              <p className="card-kicker">Enter with clarity</p>
-              <h3>Market Entry<br />&amp; Growth Strategy</h3>
+          <Capability
+            id="market"
+            index="02"
+            kicker="Enter with clarity"
+            title={<>Market Entry<br />&amp; Growth Strategy</>}
+            icon={<div className="mini-icon compass" aria-hidden="true"><i /></div>}
+          >
               <p>
-                We translate market ambition into a practical entry plan—grounded
-                in commercial realities, stakeholder dynamics, and the right
-                local operating model.
+                Columbus Advisors supports international companies seeking to enter, establish, or expand their operations in African markets.
               </p>
-            </div>
-            <ul>
-              <li>Market intelligence &amp; validation</li>
-              <li>Partner and channel strategy</li>
-              <li>Regulatory &amp; stakeholder mapping</li>
-            </ul>
-          </article>
+              <p>
+                We combine local market intelligence, commercial analysis, institutional relationships, and execution support to help clients understand the operating environment, identify viable opportunities, and select an appropriate market-entry strategy.
+              </p>
+              <p className="list-label">Our services include</p>
+              <ul>
+                <li>Market assessment and opportunity identification</li>
+                <li>Regulatory and competitive landscape analysis</li>
+                <li>Entry-mode and localization strategy</li>
+                <li>Customer, distributor, and channel development</li>
+                <li>Local partner identification and assessment</li>
+                <li>Government and institutional stakeholder engagement</li>
+                <li>Business-development and expansion planning</li>
+                <li>Market-entry risk assessment and implementation roadmaps</li>
+              </ul>
+              <p className="card-note">
+                Our objective is to help clients move from market interest to a practical, locally informed, and commercially sustainable growth strategy.
+              </p>
+          </Capability>
 
-          <article className="capability-card">
-            <div className="card-index">03</div>
-            <div className="mini-icon links" aria-hidden="true"><i /><i /></div>
-            <div>
-              <p className="card-kicker">Align the right parties</p>
-              <h3>Strategic Partnerships<br />&amp; Deal Origination</h3>
+          <Capability
+            id="partnerships"
+            index="03"
+            kicker="Align the right parties"
+            title={<>Strategic Partnerships<br />&amp; Deal Origination</>}
+            icon={<div className="mini-icon links" aria-hidden="true"><i /><i /></div>}
+          >
               <p>
-                We originate and qualify opportunities, connect complementary
-                partners, and define commercial frameworks built for long-term
-                value creation.
+                Columbus Advisors connects credible international partners, African enterprises, project sponsors, investors, and public-sector institutions around clearly defined commercial opportunities.
               </p>
-            </div>
-            <ul>
-              <li>Opportunity sourcing</li>
-              <li>Partner identification &amp; alignment</li>
-              <li>Commercial model development</li>
-            </ul>
-          </article>
+              <p>
+                We originate and evaluate opportunities, identify complementary partners, and help establish structures that align responsibilities, economics, risk, and long-term objectives.
+              </p>
+              <p className="list-label">Our work includes</p>
+              <ul>
+                <li>Proprietary opportunity and transaction origination</li>
+                <li>Strategic and technical partner identification</li>
+                <li>Joint venture and consortium development</li>
+                <li>Manufacturer, distributor, and local operator partnerships</li>
+                <li>Investor and project-sponsor introductions</li>
+                <li>Preliminary commercial and counterparty assessment</li>
+                <li>Partnership frameworks and term-sheet support</li>
+                <li>Cross-border negotiation and stakeholder coordination</li>
+              </ul>
+              <p className="card-note">
+                We focus on building partnerships with a credible commercial rationale—not simply making introductions.
+              </p>
+          </Capability>
 
-          <article className="capability-card dark-card">
-            <div className="card-index">04</div>
-            <div className="mini-icon structure" aria-hidden="true"><i /><i /><i /></div>
-            <div>
-              <p className="card-kicker">Build for execution</p>
-              <h3>Project Structuring<br />&amp; Execution Support</h3>
+          <Capability
+            id="projects"
+            className="dark-card"
+            index="04"
+            kicker="Build for execution"
+            title={<>Project Structuring<br />&amp; Execution Support</>}
+            icon={<div className="mini-icon structure" aria-hidden="true"><i /><i /><i /></div>}
+          >
               <p>
-                We help convert early-stage concepts into credible transactions
-                with clear roles, commercial logic, milestones, and routes to
-                financing.
+                Columbus Advisors helps transform promising opportunities into structured, financeable, and executable projects.
               </p>
-            </div>
-            <ul>
-              <li>Export finance &amp; offtake strategy</li>
-              <li>PPP and joint-venture frameworks</li>
-              <li>Transaction PMO &amp; coordination</li>
-            </ul>
-          </article>
+              <p>
+                We work with sponsors and stakeholders to define the project structure, allocate responsibilities and risks, establish an implementation roadmap, and coordinate the financial, commercial, technical, and institutional workstreams required to advance a transaction.
+              </p>
+              <p className="list-label">Our services may include</p>
+              <ul>
+                <li>Project and transaction-readiness assessment</li>
+                <li>Special-purpose vehicle and joint-venture structuring</li>
+                <li>Public-private partnership support</li>
+                <li>Sources-and-uses and capital-stack development</li>
+                <li>Risk-allocation and credit-enhancement strategies</li>
+                <li>Project financial modelling and scenario analysis</li>
+                <li>Due-diligence coordination and data-room preparation</li>
+                <li>Lender, investor, technical adviser, and government coordination</li>
+                <li>Negotiation support and financial-close planning</li>
+                <li>Post-closing implementation and governance frameworks</li>
+              </ul>
+              <p className="card-note">
+                Our role is to maintain transaction discipline, align the parties, and help move projects from concept through financing and execution.
+              </p>
+          </Capability>
         </div>
       </section>
 
@@ -195,11 +363,95 @@ export default function Home() {
             </p>
           </div>
           <div className="sector-list">
-            <div><span>01</span><h3>Digital Infrastructure<br />&amp; Cybersecurity</h3><p>Enterprise technology · Data infrastructure · Digital trust</p></div>
-            <div><span>02</span><h3>Industrials, Mining<br />&amp; Manufacturing</h3><p>Value addition · Processing · Export industries</p></div>
-            <div><span>03</span><h3>Agriculture<br />&amp; Equipment</h3><p>Mechanization · Food systems · Export finance</p></div>
-            <div><span>04</span><h3>Infrastructure<br />&amp; Real Assets</h3><p>Real estate · Utilities · Public-private projects</p></div>
-            <div><span>05</span><h3>Financial Services<br />&amp; Diaspora Capital</h3><p>Investment products · Wealth solutions · Market access</p></div>
+            <Sector id="digital" index="01" title="Digital Infrastructure & Cybersecurity">
+                <p>
+                  Columbus Advisors supports investments and strategic partnerships in the digital systems required for Africa’s economic growth and institutional resilience.
+                </p>
+                <p>
+                  Our focus includes data infrastructure, cloud and high-performance computing, artificial intelligence, enterprise technology, cybersecurity, digital identity, security operations centres, and workforce development.
+                </p>
+                <p>
+                  We help international technology companies and African partners develop market-entry strategies, identify qualified local operators, establish distribution and implementation channels, structure joint ventures, and engage enterprise and government customers.
+                </p>
+                <p className="list-label">Areas of focus</p>
+                <ul>
+                  <li>Data centres, cloud infrastructure, and advanced computing</li>
+                  <li>Artificial intelligence and digital transformation</li>
+                  <li>Enterprise and public-sector cybersecurity</li>
+                  <li>Security operations centres and managed security services</li>
+                  <li>Data sovereignty and regulatory compliance</li>
+                  <li>Technology localization and skills development</li>
+                  <li>Strategic partnerships, distribution, and market expansion</li>
+                </ul>
+            </Sector>
+            <Sector id="industrial" index="02" title="Industrial, Mining & Manufacturing">
+                <p>
+                  Columbus Advisors supports industrial projects that convert Africa’s natural resources, agricultural production, and growing consumer markets into higher-value domestic and export-oriented products.
+                </p>
+                <p>
+                  We work with project sponsors, equipment manufacturers, technical partners, investors, and public institutions to develop commercially viable mining, mineral-processing, manufacturing, and industrial-equipment opportunities.
+                </p>
+                <p className="list-label">Areas of interest</p>
+                <ul>
+                  <li>Mining and mineral beneficiation</li>
+                  <li>Silica processing and glass manufacturing</li>
+                  <li>Agricultural and food-processing equipment</li>
+                  <li>Light and advanced manufacturing</li>
+                  <li>Industrial machinery and production systems</li>
+                  <li>Equipment sourcing and structured equipment finance</li>
+                  <li>Export-oriented manufacturing</li>
+                  <li>Technology transfer and local production partnerships</li>
+                  <li>Industrial parks and special economic zones</li>
+                </ul>
+                <p className="card-note">
+                  Our approach emphasizes value addition, local employment, technology transfer, export development, and responsible project execution.
+                </p>
+            </Sector>
+            <Sector id="infrastructure" index="03" title="Infrastructure & Real Assets">
+                <p>
+                  Columbus Advisors advises on infrastructure and real-asset opportunities that support economic productivity, urban development, and essential services.
+                </p>
+                <p>
+                  We help sponsors evaluate project feasibility, establish suitable ownership and financing structures, engage capital providers, and coordinate transactions involving public and private stakeholders.
+                </p>
+                <p className="list-label">Areas of focus</p>
+                <ul>
+                  <li>Commercial and mixed-use real estate</li>
+                  <li>Healthcare and education infrastructure</li>
+                  <li>Logistics, warehousing, and industrial facilities</li>
+                  <li>Energy and utility-related assets</li>
+                  <li>Hospitality and urban-development projects</li>
+                  <li>Public-private partnerships</li>
+                  <li>Property-owning and operating-company structures</li>
+                  <li>Project finance, credit enhancement, and blended capital</li>
+                </ul>
+                <p className="card-note">
+                  We focus on projects supported by identifiable demand, credible sponsors, appropriate risk allocation, and realistic pathways to financial close.
+                </p>
+            </Sector>
+            <Sector id="financial" index="04" title="Financial Services & Diaspora Capital">
+                <p>
+                  Columbus Advisors develops partnerships and investment pathways that connect African financial opportunities with institutional, international, and diaspora capital.
+                </p>
+                <p>
+                  We work with asset managers, banks, investment firms, fintech companies, and other regulated institutions to evaluate market opportunities, develop suitable investment structures, and establish credible local operating and distribution partnerships.
+                </p>
+                <p className="list-label">Areas of focus</p>
+                <ul>
+                  <li>Diaspora investment and savings products</li>
+                  <li>Institutional and pension-market strategies</li>
+                  <li>Feeder funds and locally compliant investment vehicles</li>
+                  <li>Private credit and fixed-income opportunities</li>
+                  <li>SME and equipment-finance platforms</li>
+                  <li>Fintech and financial-market infrastructure</li>
+                  <li>Cross-border investment partnerships</li>
+                  <li>Local asset-management and distribution arrangements</li>
+                  <li>Financial inclusion and development-oriented capital</li>
+                </ul>
+                <p className="card-note">
+                  Our objective is to create transparent, institutionally credible channels through which capital can participate in Africa’s long-term growth. All regulated investment activities are undertaken through appropriately licensed institutions and professional partners.
+                </p>
+            </Sector>
           </div>
         </div>
 

@@ -381,11 +381,11 @@
 
 .columbus .capability-card {
   position: relative;
-  min-height: 570px;
+  min-height: 0;
   padding: 40px clamp(28px, 4vw, 58px) 44px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   background: #fff;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -422,8 +422,12 @@
   font-weight: 700;
 }
 
+.columbus .capability-card h3,
+.columbus .sector-list h3 {
+  margin: 0;
+}
+
 .columbus .capability-card h3 {
-  margin: 0 0 22px;
   font-family: Georgia, serif;
   font-size: clamp(30px, 3vw, 44px);
   line-height: 1.03;
@@ -431,37 +435,224 @@
   font-weight: 400;
 }
 
-.columbus .capability-card > div > p:not(.card-kicker) {
-  max-width: 540px;
+.columbus .topic-toggle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 18px;
+  row-gap: 14px;
+  align-items: center;
+  width: 100%;
   margin: 0;
-  color: #667178;
-  line-height: 1.72;
-  font-size: 15px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.columbus .dark-card > div > p:not(.card-kicker) { color: rgba(255, 255, 255, 0.62); }
+.columbus .topic-toggle .card-kicker {
+  grid-column: 1;
+  margin: 0;
+}
 
-.columbus .capability-card ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.columbus .topic-toggle .topic-name {
+  grid-column: 1;
+}
+
+.columbus .topic-toggle .topic-mark {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--orange);
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.columbus .sector-list .topic-mark {
+  grid-row: 1;
+  font-size: 28px;
+}
+
+.columbus .topic-toggle:hover,
+.columbus .topic-toggle:focus-visible {
+  background: transparent;
+  border-color: transparent;
+}
+
+.columbus .topic-toggle:hover .topic-name,
+.columbus .topic-toggle:focus-visible .topic-name {
+  color: var(--orange);
+}
+
+.columbus .topic-toggle:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 8px;
+}
+
+.columbus .topic-dialog {
+  width: min(760px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  overflow: auto;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 32px 90px rgba(8, 29, 44, 0.38);
+}
+
+.columbus .topic-dialog::backdrop {
+  background: rgba(8, 30, 47, 0.72);
+}
+
+.columbus .topic-dialog[open] {
+  animation: topic-pop 0.22s ease;
+}
+
+.columbus .topic-dialog-sheet {
+  padding: 42px 48px 48px;
+}
+
+.columbus .topic-close {
+  position: sticky;
+  top: 18px;
+  float: right;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.columbus .topic-close:hover,
+.columbus .topic-close:focus-visible {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.columbus .topic-dialog-head {
+  padding-right: 56px;
+}
+
+.columbus .topic-dialog-head h3 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.columbus .topic-dialog-body > p {
+  max-width: none;
+  margin: 16px 0 0;
+  color: #667178;
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.columbus .topic-dialog-body > p.list-label {
+  margin: 28px 0 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.columbus .topic-dialog-body > p.card-note {
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.columbus .topic-dialog-body ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 28px;
   list-style: none;
   padding: 0;
-  margin: 32px 0 0;
+  margin: 18px 0 0;
+}
+
+.columbus .topic-dialog-body li {
+  position: relative;
+  padding: 0 0 0 16px;
+  border: 0;
+  color: #4e5a62;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.columbus .topic-dialog-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--orange);
+  transform: rotate(45deg);
+}
+
+@keyframes topic-pop {
+  from { transform: translateY(16px) scale(0.98); }
+  to { transform: none; }
+}
+
+.columbus .capability-card ul {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
 }
 
 .columbus .capability-card li {
-  padding: 8px 10px;
-  border: 1px solid rgba(13, 33, 51, 0.12);
-  color: #657078;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  position: relative;
+  padding: 0 0 0 16px;
+  border: 0;
+  color: #4e5a62;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.columbus .capability-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
 }
 
 .columbus .dark-card li {
-  border-color: rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.64);
+  border: 0;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .columbus .card-symbol {
@@ -578,21 +769,19 @@
 
 .columbus .sector-list { border-top: 1px solid rgba(255, 255, 255, 0.17); }
 
-.columbus .sector-list > div {
-  position: relative;
+.columbus .sector-list > article {
   display: grid;
   grid-template-columns: 52px 1fr;
   column-gap: 18px;
-  padding: 31px 45px 31px 0;
+  padding: 36px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.17);
 }
 
-.columbus .sector-list span {
-  grid-row: 1 / 3;
+.columbus .sector-list > article > span {
   color: #e97a48;
   font-family: Georgia, serif;
   font-size: 14px;
-  padding-top: 5px;
+  padding-top: 8px;
 }
 
 .columbus .sector-list h3 {
@@ -604,20 +793,44 @@
 }
 
 .columbus .sector-list p {
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-.columbus .sector-list > div::after {
-  content: "↗";
+.columbus .sector-list .card-note {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.columbus .sector-list ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 28px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.columbus .sector-list li {
+  position: relative;
+  padding-left: 16px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.columbus .sector-list li::before {
+  content: "";
   position: absolute;
-  right: 5px;
-  top: 34px;
-  color: rgba(255, 255, 255, 0.34);
-  font-size: 18px;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #e97a48;
+  transform: rotate(45deg);
 }
 
 .columbus .approach-panel {
@@ -779,7 +992,7 @@ html:has(.columbus) { scroll-behavior: smooth; }
   .columbus .hero-deck { max-width: 560px; }
   .columbus .section-heading,
   .columbus .sector-panel { grid-template-columns: 1fr; gap: 45px; }
-  .columbus .capability-card { min-height: 540px; }
+  .columbus .sector-list ul { grid-template-columns: 1fr; }
   .columbus .sector-intro { position: static; }
   .columbus .approach-steps { grid-template-columns: 1fr; }
   .columbus .approach-steps article,
@@ -821,14 +1034,16 @@ html:has(.columbus) { scroll-behavior: smooth; }
   .columbus .hero-proof p { font-size: 9px; }
   .columbus .hero-visual { width: 480px; right: -295px; top: 255px; }
   .columbus .capability-grid { grid-template-columns: 1fr; }
-  .columbus .capability-card { min-height: 530px; padding: 31px 26px; }
+  .columbus .capability-card { padding: 31px 26px; }
   .columbus .card-index { top: 32px; right: 28px; }
   .columbus .section-heading { margin-bottom: 42px; }
   .columbus .section-heading h2,
   .columbus .approach-heading h2 { font-size: 43px; }
-  .columbus .sector-list > div { grid-template-columns: 40px 1fr; }
+  .columbus .sector-list > article { grid-template-columns: 40px 1fr; }
   .columbus .approach-heading { display: block; }
   .columbus .contact-lead h2 { font-size: 43px; }
+  .columbus .topic-dialog-sheet { padding: 32px 24px 36px; }
+  .columbus .topic-dialog-body ul { grid-template-columns: 1fr; }
   .columbus .contact-pathways a { min-height: 300px; padding: 30px 25px; }
   .columbus .contact-note { text-align: left; line-height: 1.5; }
   .columbus .sector-panel { padding-top: 90px; }
@@ -838,5 +1053,6 @@ html:has(.columbus) { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html:has(.columbus) { scroll-behavior: auto; }
   .columbus .capability-card,
-  .columbus .button { transition: none; }
+  .columbus .button,
+  .columbus .topic-dialog[open] { transition: none; animation: none; }
 }
