@@ -122,6 +122,161 @@ function ApproachStep({ id, index, title, children }) {
   )
 }
 
+function FeaturedPlatform() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <section className="featured-platform" id="platform">
+      <h2>
+        <button
+          type="button"
+          className="topic-toggle"
+          aria-haspopup="dialog"
+          aria-expanded={open}
+          aria-controls="platform-article-panel"
+          onClick={() => setOpen(true)}
+        >
+          <span className="card-kicker">Featured platform</span>
+          <span className="topic-name">China–Africa Agricultural &amp; Industrial Finance Platform</span>
+          <span className="platform-deck">Bridging the financing gap. Unlocking opportunities between China and Africa.</span>
+          <span className="topic-mark" aria-hidden="true">+</span>
+        </button>
+      </h2>
+      <TopicDialog
+        id="platform-article"
+        open={open}
+        onClose={() => setOpen(false)}
+        kicker="Featured platform"
+        title="China–Africa Agricultural & Industrial Finance Platform"
+      >
+        <p className="platform-deck">Bridging the financing gap. Unlocking opportunities between China and Africa.</p>
+        <figure className="platform-figure">
+          <img src="/images/Picture1.jpg" alt="Harvester and tractor working a green field, with the TracTrac mark" />
+        </figure>
+        <a className="platform-link" href="https://tractrac.co" target="_blank" rel="noopener noreferrer">tractrac.co</a>
+        <article className="platform-article">
+          <h3>Connecting capital, equipment, and opportunity</h3>
+          <p>
+            Columbus Capital Advisors Limited, in collaboration with its China-based strategic partner, QF Intelligent Machine Co., Ltd., is developing the China–Africa Agricultural &amp; Industrial Finance Platform to facilitate access to modern agricultural and industrial equipment across Sub-Saharan Africa.
+          </p>
+          <p>
+            The initiative seeks to bridge Africa&apos;s equipment financing gap by connecting Chinese manufacturers and financing institutions with qualified African enterprises through structured financing, institutional partnerships, and credit-risk mitigation solutions.
+          </p>
+          <p>
+            Our objective is to establish a commercially sustainable financing framework that supports agricultural mechanization, agro-processing, industrial productivity, and long-term economic development.
+          </p>
+
+          <h3>The opportunity</h3>
+          <p>
+            Across Africa, limited access to affordable medium-term financing continues to constrain investment in productive equipment, particularly in agriculture and manufacturing.
+          </p>
+          <p>
+            China offers extensive manufacturing capabilities, competitive equipment solutions, and established export financing institutions. Columbus Advisors seeks to connect these resources with Africa&apos;s growing demand through a coordinated cross-border financing platform.
+          </p>
+          <p>
+            By combining international capital, Chinese manufacturing expertise, and local African market intelligence, the platform aims to unlock investment opportunities and strengthen economic cooperation between China and Africa.
+          </p>
+
+          <h3>Our financing platform</h3>
+          <div className="platform-stats">
+            <div>
+              <b>$10M</b>
+              <span>Target pilot program</span>
+              <p>Initial financing objective in Nigeria</p>
+            </div>
+            <div>
+              <b>3–5 years</b>
+              <span>Proposed financing tenor</span>
+              <p>Medium-term equipment financing</p>
+            </div>
+          </div>
+          <p>
+            Columbus Advisors and QF Intelligent are developing an initial US$10 million pilot financing program in Nigeria, with a proposed financing tenor of three to five years.
+          </p>
+          <p>
+            The platform is designed to bring together Chinese equipment suppliers, export financing institutions, African commercial banks, and qualified borrowers within a structured transaction framework.
+          </p>
+          <p>
+            Following successful implementation, the objective is to establish a repeatable financing model capable of supporting expansion into other West African markets.
+          </p>
+          <p className="platform-note">
+            The pilot amount and financing terms are development objectives, subject to institutional credit approval, documentation, and final agreements.
+          </p>
+
+          <h3>Institutional engagement &amp; strategic partnerships</h3>
+          <p>
+            Columbus Advisors and QF Intelligent are pursuing institutional engagement with leading Chinese financial and export credit institutions, including:
+          </p>
+          <ul className="platform-partners">
+            <li>
+              <h4>Export-Import Bank of China (China Eximbank)</h4>
+              <p>Exploring medium-term export financing structures to support the supply of Chinese agricultural and industrial equipment to qualified African buyers.</p>
+            </li>
+            <li>
+              <h4>Industrial and Commercial Bank of China (ICBC)</h4>
+              <p>Pursuing discussions on potential trade finance, local banking coordination, credit assessment, and transaction support.</p>
+            </li>
+            <li>
+              <h4>China Export &amp; Credit Insurance Corporation (Sinosure)</h4>
+              <p>Exploring export credit insurance and risk mitigation solutions that could support cross-border equipment financing.</p>
+            </li>
+            <li>
+              <h4>QF Intelligent Machine Co., Ltd. — China strategic partner</h4>
+              <p>Coordinating Chinese equipment manufacturers, technical specifications, procurement, export execution, and after-sales support.</p>
+            </li>
+          </ul>
+          <p className="platform-note">
+            These engagements form part of the platform&apos;s development strategy. Financing participation, insurance coverage, and banking arrangements remain subject to the respective institutions&apos; review and approval.
+          </p>
+
+          <h3>Priority equipment &amp; industries</h3>
+          <ul className="platform-equipment">
+            <li>
+              <img src="/images/Picture2.jpg" alt="Combine harvester and tractor working a grain field" />
+              <h4>Agricultural mechanization</h4>
+              <p>Tractors, harvesters, planting and farming equipment.</p>
+            </li>
+            <li>
+              <img src="/images/Picture3.jpg" alt="Center-pivot irrigation system watering a green crop" />
+              <h4>Irrigation systems</h4>
+              <p>Water management and agricultural irrigation equipment.</p>
+            </li>
+            <li>
+              <img src="/images/Picture4.jpg" alt="Workers operating an agro-processing line inside a factory" />
+              <h4>Agro-processing</h4>
+              <p>Cashew, palm oil, and agricultural value-addition machinery.</p>
+            </li>
+            <li>
+              <img src="/images/Picture5.jpg" alt="Precision industrial machinery on a production line" />
+              <h4>Industrial equipment</h4>
+              <p>Manufacturing machinery and productive industrial technologies.</p>
+            </li>
+          </ul>
+
+          <h3>The role of Columbus Advisors</h3>
+          <p>
+            Columbus Capital Advisors serves as the African-side investment advisory and transaction structuring partner, coordinating the commercial and financial elements required to advance the platform.
+          </p>
+          <p>
+            Our responsibilities include identifying qualified equipment buyers, assessing financing requirements, structuring transactions, engaging African financial institutions, and facilitating cross-border partnerships.
+          </p>
+          <p>
+            Working alongside QF Intelligent, our objective is to develop a scalable financing corridor that aligns Chinese manufacturing and financing capabilities with African enterprise needs.
+          </p>
+
+          <h3>Building a sustainable China–Africa financing corridor</h3>
+          <p>
+            The platform represents Columbus Advisors&apos; broader commitment to facilitating productive capital flows, technology transfer, and industrial development across Africa.
+          </p>
+          <p>
+            Beginning with Nigeria, our long-term vision is to develop a scalable financing framework that enables African businesses to modernize operations, increase productivity, strengthen value chains, and participate more competitively in regional and global markets.
+          </p>
+        </article>
+      </TopicDialog>
+    </section>
+  )
+}
+
 function Sector({ id, index, title, children }) {
   const [open, setOpen] = useState(false)
 
@@ -180,6 +335,7 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <a href="#capabilities">Capabilities</a>
           <a href="#sectors">Sectors</a>
+          <a href="#platform">Featured Platform</a>
           <a href="#approach">How we work</a>
         </nav>
         <a className="header-cta" href="#contact">
@@ -474,6 +630,8 @@ export default function Home() {
             </Sector>
           </div>
         </div>
+
+        <FeaturedPlatform />
 
         <div className="approach-panel" id="approach">
           <div className="approach-heading">
